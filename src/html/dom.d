@@ -478,7 +478,7 @@ struct Node {
 				app.put(tag_);
 				app.put('>');
 			} else {
-				app.put(" />");
+				app.put(">");
 			}
 			break;
 		case Text:
