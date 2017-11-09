@@ -66,11 +66,15 @@ auto getEntityUTF8(const(char)[] name) {
 package auto decodeCodePoint(int code) {
 	static char[4] buf;
 
+	size_t len;
+
 	if (isValidDchar(cast(dchar)code)) {
-		return toUTF8(buf, cast(dchar)code);
+		len = encode(buf, cast(dchar)code);
 	} else {
-		return toUTF8(buf, cast(dchar)0xfffd);
+		len = encode(buf, cast(dchar)0xfffd);
 	}
+
+	return cast(const(char)[])buf;
 }
 
 shared static this() {
